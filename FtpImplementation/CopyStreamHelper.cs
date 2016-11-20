@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FtpImplementation
 {
@@ -12,7 +9,7 @@ namespace FtpImplementation
         private static long CopyStream(Stream input, Stream output, int bufferSize)
         {
             byte[] buffer = new byte[bufferSize];
-            int count = 0;
+            int count;
             long total = 0;
 
             while ((count = input.Read(buffer, 0, buffer.Length)) > 0)
@@ -26,14 +23,14 @@ namespace FtpImplementation
 
         private static long CopyStreamAscii(Stream input, Stream output, int bufferSize)
         {
-            char[] buffer = new char[bufferSize];
-            int count = 0;
-            long total = 0;
+            var buffer = new char[bufferSize];
+            var total = 0;
 
             using (StreamReader rdr = new StreamReader(input))
             {
                 using (StreamWriter wtr = new StreamWriter(output, Encoding.ASCII))
                 {
+                    int count;
                     while ((count = rdr.Read(buffer, 0, buffer.Length)) > 0)
                     {
                         wtr.Write(buffer, 0, count);
@@ -47,14 +44,8 @@ namespace FtpImplementation
 
         public static long CopyStream(Stream input, Stream output, string transferType)
         {
-            if (transferType == "I")
-            {
-                return CopyStream(input, output, 4096);
-            }
-            else
-            {
-                return CopyStreamAscii(input, output, 4096);
-            }
+            if (transferType == "I") return CopyStream(input, output, 4096);
+            return CopyStreamAscii(input, output, 4096);
         }
     }
 }

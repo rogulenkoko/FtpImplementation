@@ -45,8 +45,20 @@
   <ItemGroup>
     <Compile Include="ClientConnection.cs" />
     <Compile Include="CopyStreamHelper.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="DataConnectionType.cs" />
+    <Compile Include="FtpCommands\ChangeDirectoryCommand.cs" />
+    <Compile Include="FtpCommands\FtpCommandsController.cs" />
+    <Compile Include="FtpCommands\ListCommand.cs" />
+    <Compile Include="FtpCommands\PassiveCommand.cs" />
+    <Compile Include="FtpCommands\PasswordCommand.cs" />
+    <Compile Include="FtpCommands\PortCommand.cs" />
+    <Compile Include="FtpCommands\PrintDirectoryCommand.cs" />
+    <Compile Include="FtpCommands\QuitCommand.cs" />
+    <Compile Include="FtpCommands\RetrieveCommand.cs" />
+    <Compile Include="FtpCommands\TypeCommand.cs" />
+    <Compile Include="FtpCommands\UserCommand.cs" />
     <Compile Include="FtpServer.cs" />
+    <Compile Include="FtpCommands\ICommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
